@@ -17,6 +17,7 @@ import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
+import org.springframework.security.access.annotation.Secured;
 import org.springframework.transaction.annotation.Transactional;
 import org.springframework.validation.BindingResult;
 import org.springframework.validation.ObjectError;
@@ -147,6 +148,7 @@ public class ProductoController {
     // no se puede dejar el content type en Auto, porque de lo contrario asume
     // application/octet-stream
     // y genera una exception MediaTypeNotSupported
+    @Secured("ADMIN")
     @PostMapping( consumes = "multipart/form-data" )
     @Transactional
     public ResponseEntity<Map<String, Object>> insert(
