@@ -15,27 +15,27 @@ public class UserController {
     private final UserService userService;
 
     @GetMapping("/all")
-    public ResponseEntity<List<User>> getAllUsers(){
+    public ResponseEntity<List<User>> getAllUsers() {
         return new ResponseEntity<>(userService.findAll(), HttpStatus.FOUND);
     }
-    
+
     @PostMapping("/add")
-    public ResponseEntity<User> add(@RequestBody User user){
+    public ResponseEntity<User> add(@RequestBody User user) {
         return ResponseEntity.ok(userService.add(user));
     }
 
     @GetMapping("/{email}")
-    public User getByEmail(@PathVariable("email") String email){
-        return  userService.findByEmail(email);
+    public User getByEmail(@PathVariable("email") String email) {
+        return userService.findByEmail(email);
     }
 
     @DeleteMapping("/{email}")
-    public void delete(@PathVariable("email") String email){
+    public void delete(@PathVariable("email") String email) {
         userService.deleteByEmail(email);
     }
 
     @PutMapping("/update")
-    public ResponseEntity<User> update(@RequestBody User user){
+    public ResponseEntity<User> update(@RequestBody User user) {
         return ResponseEntity.ok(userService.update(user));
     }
 

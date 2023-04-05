@@ -148,14 +148,14 @@ public class ProductoController {
     // no se puede dejar el content type en Auto, porque de lo contrario asume
     // application/octet-stream
     // y genera una exception MediaTypeNotSupported
-    @Secured("ADMIN")
+    // @Secured("ADMIN")
     @PostMapping( consumes = "multipart/form-data" )
     @Transactional
     public ResponseEntity<Map<String, Object>> insert(
         @Valid 
         @RequestPart(name = "producto") Producto producto, 
         BindingResult result,  
-        @RequestPart(name = "file") MultipartFile file) throws IOException {
+        @RequestPart(name = "file", required = false) MultipartFile file) throws IOException {
 
         Map<String, Object> responseAsMap = new HashMap<>();
         ResponseEntity<Map<String, Object>> responseEntity = null;

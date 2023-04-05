@@ -17,13 +17,13 @@ import lombok.Data;
 @Data
 public class MyUserDetails implements UserDetails {
 
-    private String userEmail;
+    private String userName;
     private String password;
 
     private List<GrantedAuthority> authorities;
 
     public MyUserDetails(User user) {
-        this.userEmail = user.getEmail();
+        this.userName = user.getEmail();
         this.password = user.getPassword();
 
         authorities = Arrays
@@ -44,7 +44,7 @@ public class MyUserDetails implements UserDetails {
 
     @Override
     public String getUsername() {
-        return  this.userEmail;
+        return  this.userName;
     }
 
     @Override

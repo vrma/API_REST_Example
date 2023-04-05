@@ -28,16 +28,23 @@ public class SecurityConfig {
 
     @Bean
     SecurityFilterChain securityFilterChain(HttpSecurity http) throws Exception {
-        http.csrf().disable();
-        http.authorizeHttpRequests()
-                .requestMatchers(UN_SECURED_URLs).permitAll().and()
-                .authorizeHttpRequests().requestMatchers(SECURED_URLs)
-                .hasAuthority("ADMIN").anyRequest()
-                .authenticated().and().httpBasic(withDefaults());
+    http.csrf().disable();
+    http.authorizeHttpRequests()
+            .requestMatchers(UN_SECURED_URLs).permitAll().and()
+            .authorizeHttpRequests().requestMatchers(SECURED_URLs)
+            .hasAuthority("ADMIN").anyRequest()
+            .authenticated().and().httpBasic(withDefaults());
 
         return http.build();
 
     }
+
+    // http.csrf().disable();
+    // http.authorizeHttpRequests()
+    //         .requestMatchers(UN_SECURED_URLs).permitAll().and()
+    //         .authorizeHttpRequests().requestMatchers(SECURED_URLs)
+    //         .hasAuthority("ADMIN").anyRequest()
+    //         .authenticated().and().httpBasic(withDefaults());    
     
     // public static void main(String[] args) {
     //     System.out.println(new SecurityConfig().passwordEncoder().encode("123456"));
