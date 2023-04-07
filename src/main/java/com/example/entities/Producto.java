@@ -44,7 +44,7 @@ public class Producto implements Serializable {
     @Min(value = 0, message = "El stock no puede ser negativo")
     private long stock;
 
-    @NotNull
+    // @NotNull
     private String imagenProducto;
 
     @ManyToOne(fetch = FetchType.LAZY, cascade = CascadeType.PERSIST)
